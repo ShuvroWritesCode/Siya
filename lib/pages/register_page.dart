@@ -10,10 +10,17 @@ class RegisterPages extends StatefulWidget {
 }
 
 class _RegisterPagesState extends State<RegisterPages> {
-  bool _secureText = true;
+  bool _secureText_password = true;
   showHide() {
     setState(() {
-      _secureText = !_secureText;
+      _secureText_password = !_secureText_password;
+    });
+  }
+
+  bool _secureText_confirm_password = true;
+  showHide2() {
+    setState(() {
+      _secureText_confirm_password = !_secureText_confirm_password;
     });
   }
 
@@ -150,11 +157,11 @@ class _RegisterPagesState extends State<RegisterPages> {
                   ),
                   width: MediaQuery.of(context).size.width,
                   child: TextField(
-                    obscureText: _secureText,
+                    obscureText: _secureText_password,
                     decoration: InputDecoration(
                         suffixIcon: IconButton(
                           onPressed: showHide,
-                          icon: _secureText
+                          icon: _secureText_password
                               ? Icon(Icons.visibility_off)
                               : Icon(Icons.visibility),
                         ),
@@ -185,11 +192,11 @@ class _RegisterPagesState extends State<RegisterPages> {
                   ),
                   width: MediaQuery.of(context).size.width,
                   child: TextField(
-                    obscureText: _secureText,
+                    obscureText: _secureText_confirm_password,
                     decoration: InputDecoration(
                         suffixIcon: IconButton(
-                          onPressed: showHide,
-                          icon: _secureText
+                          onPressed: showHide2,
+                          icon: _secureText_confirm_password
                               ? Icon(Icons.visibility_off)
                               : Icon(Icons.visibility),
                         ),
