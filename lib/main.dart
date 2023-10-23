@@ -1,7 +1,9 @@
- import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:siya/pages/home_page.dart';
 import 'package:siya/pages/splash_screen.dart';
-import 'package:siya/theme.dart';
+import 'package:siya/pages/profile_page.dart';
+import 'package:siya/main_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,9 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SplashScreen(),
-    theme: ThemeData(
-      scaffoldBackgroundColor: Colors.green.shade50,
-    )
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.green.shade50,
+      ),
     );
   }
 }

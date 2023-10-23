@@ -57,6 +57,9 @@ class _RegisterPagesState extends State<RegisterPages> {
                 SizedBox(
                   height: 10,
                 ),
+                SizedBox(
+                  height: 15,
+                ),
                 Container(
                   padding: const EdgeInsets.only(left: 16),
                   height: 50,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:siya/main_page.dart';
+import 'package:siya/pages/home_page.dart';
 import 'package:siya/widgets/general_logo_space.dart';
 import 'package:siya/theme.dart';
 import 'package:siya/widgets/button_primary.dart';
 import 'register_page.dart';
-
+import 'profile_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -21,7 +23,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
       return Scaffold(
-
         body: ListView(
           children: [
             Container(
@@ -38,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     "Login",
                     style: TextStyle(
-                      color: Colors.green.shade900,
+                      color: Colors.green.shade700,
                       fontSize: 25,
                       fontWeight:
                       FontWeight.bold, // Add this line to make the text bold
@@ -125,7 +126,12 @@ class _LoginPageState extends State<LoginPage> {
                     width: MediaQuery.of(context).size.width,
                     child: ButtonPrimary(
                       text: "Login",
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MainPages()),
+                        );
+                      },
                     ),
                   ),
                   SizedBox(height: 18),
