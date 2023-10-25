@@ -1,0 +1,1 @@
+enum MedicineType {Tablet, Bottle, Syringe,Pill, None}
