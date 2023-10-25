@@ -22,7 +22,7 @@ class CardProduct extends StatelessWidget {
             height: 76,
           ),
           SizedBox(
-            height: 16,
+            height: 10,
           ),
           Text(
             "vitamin",
@@ -34,14 +34,6 @@ class CardProduct extends StatelessWidget {
             ),
           SizedBox(
             height: 14,
-          ),
-          Text(
-            "BDT " + "225/=",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.green.shade700,
-              fontWeight: FontWeight.w500,
-            ),
           ),
         ],
       ),

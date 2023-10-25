@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:siya/main_page.dart';
-import 'package:siya/pages/home_page.dart';
+import 'package:siya/pages/forgot_password.dart';
 import 'package:siya/widgets/general_logo_space.dart';
-import 'package:siya/theme.dart';
 import 'package:siya/widgets/button_primary.dart';
 import 'register_page.dart';
-import 'profile_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -120,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(
-                      height: 30
+                      height: 20
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
@@ -135,6 +133,35 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height: 18),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Forgot Password? ",
+                        style: TextStyle(
+                          color: Colors.grey.shade500,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ForgotPasswordPage(), // Replace LoginPage with your actual page name
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Reset now",
+                          style: TextStyle(
+                            color: Colors.green.shade500,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
