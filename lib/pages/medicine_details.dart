@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:siya/pages/reminder_page.dart';
 import 'package:sizer/sizer.dart';
 
 class MedicineDetails extends StatefulWidget {
@@ -106,7 +107,13 @@ class _MedicineDetailsState extends State<MedicineDetails> {
               onPressed: () {
                 //global block to delete medicine,later
                 _globalBloc.removeMedicine(widget.medicine);
-                Navigator.popUntil(context, ModalRoute.withName('/'));
+                Navigator.of(context).pop();
+                // Navigator.pop(context);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => ReminderPage()),
+                // );
+                // Navigator.popUntil(context, ModalRoute.withName('/'));
               },
               child: Text(
                 'OK',

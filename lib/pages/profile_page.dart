@@ -137,6 +137,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
                         hintText: "Phone Number",
                         hintStyle: TextStyle(
                           fontSize: 15,
@@ -165,6 +167,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
                         hintText: "Gender",
                         hintStyle: TextStyle(
                           fontSize: 15,
@@ -193,6 +197,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
                         hintText: "Age",
                         hintStyle: TextStyle(
                           fontSize: 15,
@@ -221,6 +227,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
                         hintText: "Height",
                         hintStyle: TextStyle(
                           fontSize: 15,
@@ -249,6 +257,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
                         hintText: "Weight",
                         hintStyle: TextStyle(
                           fontSize: 15,
