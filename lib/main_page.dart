@@ -23,7 +23,7 @@ class _MainPagesState extends State<MainPages> {
     StorePage(),
     ReminderPage(),
     SearchResultScreen(),
-    ProfilePage(),
+    ProfileScreen(),
   ];
 
   onTappedItem(int index) {

@@ -6,7 +6,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:siya/pages/reminder_page.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 
 class MedicineDetails extends StatefulWidget {
   const MedicineDetails(this.medicine, {Key? key}) : super(key: key);
@@ -30,21 +30,23 @@ class _MedicineDetailsState extends State<MedicineDetails> {
   }
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     final GlobalBloc _globalBloc = Provider.of<GlobalBloc>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Details'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(2.h),
+        padding: EdgeInsets.all(0.02*h),
         child: Column(
           children: [
             MainSection(medicine: widget.medicine),
             ExtendedSection(medicine: widget.medicine),
             Spacer(),
             SizedBox(
-              width: 100.w,
-              height: 7.h,
+              width: w,
+              height: 0.07*h,
               child: TextButton(
                 style: TextButton.styleFrom(
                   backgroundColor: kSecondaryColor,
@@ -65,7 +67,7 @@ class _MedicineDetailsState extends State<MedicineDetails> {
               ),
             ),
             SizedBox(
-              height: 2.h,
+              height: 0.02*h,
             ),
           ],
         ),
@@ -75,6 +77,8 @@ class _MedicineDetailsState extends State<MedicineDetails> {
   //lets delete a medicine from memory
 
   openAlertBox(BuildContext context, GlobalBloc _globalBloc) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     return showDialog(
       context: context,
       builder: (context) {
@@ -85,7 +89,7 @@ class _MedicineDetailsState extends State<MedicineDetails> {
               Radius.circular(20.0),
             ),
           ),
-          contentPadding: EdgeInsets.only(top: 1.h),
+          contentPadding: EdgeInsets.only(top: 0.01*h),
           title: Text(
             'Delete This Reminder?',
             textAlign: TextAlign.center,
@@ -108,7 +112,7 @@ class _MedicineDetailsState extends State<MedicineDetails> {
                 //global block to delete medicine,later
                 _globalBloc.removeMedicine(widget.medicine);
                 Navigator.of(context).pop();
-                // Navigator.pop(context);
+                Navigator.pop(context);
                 // Navigator.push(
                 //   context,
                 //   MaterialPageRoute(builder: (context) => ReminderPage()),
@@ -133,14 +137,16 @@ class _MedicineDetailsState extends State<MedicineDetails> {
 class MainSection extends StatelessWidget {
   const MainSection({Key? key, this.medicine}) : super(key: key);
   final Medicine? medicine;
+
   Hero makeIcon(double size) {
+    const double iconSize = 28.0;
     if (medicine!.medicineType == 'Bottle') {
       return Hero(
         tag: medicine!.medicineName! + medicine!.medicineType!,
         child: SvgPicture.asset(
           'assets/icons/bottle.svg',
           color: kOtherColor,
-          height: 7.h,
+          height: iconSize,
         ),
       );
     } else if (medicine!.medicineType == 'Pill') {
@@ -149,7 +155,7 @@ class MainSection extends StatelessWidget {
         child: SvgPicture.asset(
           'assets/icons/pill.svg',
           color: kOtherColor,
-          height: 7.h,
+          height: iconSize,
         ),
       );
     } else if (medicine!.medicineType == 'Syringe') {
@@ -158,7 +164,7 @@ class MainSection extends StatelessWidget {
         child: SvgPicture.asset(
           'assets/icons/syringe.svg',
           color: kOtherColor,
-          height: 7.h,
+          height: iconSize,
         ),
       );
     } else if (medicine!.medicineType == 'Tablet') {
@@ -167,7 +173,7 @@ class MainSection extends StatelessWidget {
         child: SvgPicture.asset(
           'assets/icons/tablet.svg',
           color: kOtherColor,
-          height: 7.h,
+          height: iconSize,
         ),
       );
     }
@@ -184,14 +190,16 @@ class MainSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         //lets try another one
         //okz same here, the same problem, later i will solve that
-        makeIcon(7.h),
+        makeIcon(0.07*h),
         SizedBox(
-          width: 2.w,
+          width: 0.02*w,
         ),
         Column(
           children: [
@@ -224,9 +232,11 @@ class MainInfoTab extends StatelessWidget {
   final String fieldInfo;
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     return SizedBox(
-      width: 40.w,
-      height: 10.h,
+      width: 0.40*w,
+      height: 0.1*h,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -236,7 +246,7 @@ class MainInfoTab extends StatelessWidget {
               style: Theme.of(context).textTheme.titleSmall,
             ),
             SizedBox(
-              height: 0.3.h,
+              height: 0.03*h,
             ),
             Text(
               fieldInfo,
@@ -254,6 +264,7 @@ class ExtendedSection extends StatelessWidget {
   final Medicine? medicine;
   @override
   Widget build(BuildContext context) {
+
     return ListView(
       shrinkWrap: true,
       children: [
@@ -287,13 +298,15 @@ class ExtendedInfoTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 2.h),
+      padding: EdgeInsets.symmetric(vertical: 0.02*h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: 1.h),
+            padding: EdgeInsets.only(bottom: 0.01*h),
             child: Text(
               fieldTitle,
               style: Theme.of(context).textTheme.headlineSmall!.copyWith(

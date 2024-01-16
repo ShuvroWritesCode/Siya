@@ -1,146 +1,96 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:siya/widgets/general_logo_space.dart';
-import 'package:siya/widgets/button_primary.dart';
-import 'package:siya/pages/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../constants/routes.dart';
+import '../widgets/show_error_dialog.dart';
 
-class ResetPasswordPage extends StatefulWidget {
+class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({Key? key}) : super(key: key);
+
   @override
-  State<ResetPasswordPage> createState() => _ResetPasswordPageState();
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
-class _ResetPasswordPageState extends State<ResetPasswordPage> {
-  TextEditingController newPasswordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
-  bool showNewPassword = false;
-  bool showConfirmPassword = false;
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+  late final TextEditingController emailController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  void validator(emailController) =>
+      emailController != null && !EmailValidator.validate(emailController)
+          ? 'Enter a valid email'
+          : null;
 
-  void toggleNewPasswordVisibility() {
-    setState(() {
-      showNewPassword = !showNewPassword;
-    });
+  void showError(String text){
+    showErrorDialog(context, text);
   }
 
-  void toggleConfirmPasswordVisibility() {
-    setState(() {
-      showConfirmPassword = !showConfirmPassword;
-    });
+  Future resetPassword() async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailController.text);
+    } on FirebaseAuthException catch (e) {
+      showError('$e');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          Container(
-            child: GeneralLogoSpace(),
-          ),
-          SizedBox(
-            height: 100,
-          ),
-          Container(
-            padding: EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Reset Password",
-                  style: TextStyle(
-                    color: Colors.green.shade700,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Enter your new password and confirm it.",
-                  style: TextStyle(
-                    color: Colors.green.shade700,
-                    fontSize: 18,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                buildPasswordInput(
-                  newPasswordController,
-                  "New Password",
-                  showNewPassword,
-                  toggleNewPasswordVisibility,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                buildPasswordInput(
-                  confirmPasswordController,
-                  "Confirm Password",
-                  showConfirmPassword,
-                  toggleConfirmPasswordVisibility,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: ButtonPrimary(
-                    text: "Reset Password",
-                    onTap: () {
-                      // Add your reset password logic here
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-              ],
+      appBar: AppBar(backgroundColor: Colors.blue,),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: ListView(
+          children: [
+            const Padding(
+              padding: EdgeInsets.fromLTRB(10, 100, 0, 10),
+              child: Text(
+                'Enter e-mail to reset password',
+                style: TextStyle(fontSize: 20),
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildPasswordInput(
-      TextEditingController controller,
-      String hintText,
-      bool obscureText,
-      VoidCallback toggleVisibility,
-      ) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      child: TextField(
-        controller: controller,
-        obscureText: obscureText,
-        style: TextStyle(
-          fontSize: 20,
-          color: Colors.green.shade700,
-        ),
-        decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: TextStyle(
-            fontSize: 15,
-            color: Colors.green.shade400,
-          ),
-          suffixIcon: IconButton(
-            icon: Icon(
-              obscureText ? Icons.visibility : Icons.visibility_off,
-              color: Colors.green.shade700,
+            Form(
+              key: formKey,
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                child: TextField(
+                  autocorrect: false,
+                  keyboardType: TextInputType.emailAddress,
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      labelText: 'E-mail',
+                      prefixIcon: Icon(Icons.email)
+                  ),
+                ),
+              ),
             ),
-            onPressed: toggleVisibility,
-          ),
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          filled: true,
-          fillColor: Colors.green.shade100,
+            Container(
+              height: 60,
+              padding: const EdgeInsets.fromLTRB(100, 10, 100, 10),
+              child: ElevatedButton(
+                onPressed: (){
+                  resetPassword();
+                  Navigator.of(context).pushNamed(loginRoute);
+                },
+                child: Container(
+                  width: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.blue,
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      "Reset",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

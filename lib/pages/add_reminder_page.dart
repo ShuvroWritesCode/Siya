@@ -14,7 +14,7 @@ import 'package:siya/model/medicine_type.dart';
 import 'package:siya/pages/add_reminder_bloc.dart';
 import 'package:siya/pages/reminder_page.dart';
 import 'package:siya/pages/success_screen.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import '../../convert_time.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tzdata;
@@ -52,6 +52,8 @@ class _AddReminderPageState extends State<AddReminderPage> {
 
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
 
     final GlobalBloc globalBloc = Provider.of<GlobalBloc>(context);
     return Scaffold(
@@ -87,18 +89,18 @@ class _AddReminderPageState extends State<AddReminderPage> {
                     "Add New Medicine",
                     style: TextStyle(
                       color: kTextColor,
-                      fontSize: 2.5.h, // Add this line to make the text bold
+                      fontSize: 0.025*h, // Add this line to make the text bold
                     ),
                   ),
                   SizedBox(
-                    height: 3.h,
+                    height: 0.03*h,
                   ),
                   // SizedBox(
                   //   height: 15,
                   // ),
                   Container(
-                    padding: EdgeInsets.only(left: 5.w),
-                    height: 6.h,
+                    padding: EdgeInsets.only(left: 0.05*w),
+                    height: 0.06*h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: const [
@@ -120,18 +122,18 @@ class _AddReminderPageState extends State<AddReminderPage> {
                             enabledBorder: InputBorder.none,
                             hintText: "Medicine name",
                             hintStyle: TextStyle(
-                              fontSize: 1.8.h,
+                              fontSize: 0.018*h,
                               color: Colors.green.shade400,
                             )),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 2.h,
+                    height: 0.02*h,
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 5.w),
-                    height: 6.h,
+                    padding: EdgeInsets.only(left: 0.05*w),
+                    height: 0.06*h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: const [
@@ -153,18 +155,18 @@ class _AddReminderPageState extends State<AddReminderPage> {
                             enabledBorder: InputBorder.none,
                             hintText: "Dosage in mg",
                             hintStyle: TextStyle(
-                              fontSize: 1.8.h,
+                              fontSize: 0.018*h,
                               color: Colors.green.shade400,
                             )),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 2.h,
+                    height: 0.02*h,
                   ),
                   const PanelTitle(title: 'Medicine Type', isRequired: false),
                   Padding(
-                    padding: EdgeInsets.only(top: 1.h),
+                    padding: EdgeInsets.only(top: 0.01*h),
                     child: StreamBuilder<MedicineType>(
                       //new entry block
                       stream: _newEntryBloc.selectedMedicineType,
@@ -209,19 +211,19 @@ class _AddReminderPageState extends State<AddReminderPage> {
                   ),
                   const IntervalSelection(),
                   SizedBox(
-                    height: 1.h,
+                    height: 0.01*h,
                   ),
                   const PanelTitle(
                       title: 'Reminder Start Time', isRequired: true),
                   const SelectTime(),
                   SizedBox(
-                    height: 6.h,
+                    height: 0.06*h,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                    padding: EdgeInsets.only(left: 0.08*w, right: 0.08*w),
                     child: SizedBox(
-                      width: 95.w,
-                      height: 8.h,
+                      width: 0.95*w,
+                      height: 0.08*h,
                       child: TextButton(
                         onPressed: () async {
                           String? medicineName;
@@ -304,7 +306,7 @@ class _AddReminderPageState extends State<AddReminderPage> {
                                 .textTheme
                                 .bodyMedium!
                                 .copyWith(
-                                    color: kGreenSecondaryColor, fontSize: 2.h),
+                                    color: kGreenSecondaryColor, fontSize: 0.02*h),
                           ),
                         ),
                       ),
@@ -485,10 +487,12 @@ class _SelectTimeState extends State<SelectTime> {
 
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     return SizedBox(
-      height: 9.h,
+      height: 0.09*h,
       child: Padding(
-        padding: EdgeInsets.only(top: 2.h),
+        padding: EdgeInsets.only(top: 0.02*h),
         child: TextButton(
           style: TextButton.styleFrom(
               backgroundColor: Colors.green.shade100,
@@ -527,6 +531,8 @@ class MedicineTypeColumn extends StatelessWidget {
   final bool isSelected;
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     final AddReminderBloc newEntryBloc = Provider.of<AddReminderBloc>(context);
     return GestureDetector(
       onTap: () {
@@ -537,30 +543,30 @@ class MedicineTypeColumn extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: 20.w,
+            width: 0.20*w,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3.h),
+                borderRadius: BorderRadius.circular(0.03*h),
                 color: isSelected ? kGreenSecondaryColor : Colors.white),
             child: Center(
               child: Padding(
                 padding: EdgeInsets.only(
-                  top: 1.h,
-                  bottom: 1.h,
+                  top: 0.01*h,
+                  bottom: 0.01*h,
                 ),
                 child: SvgPicture.asset(
                   iconValue,
-                  height: 8.h,
+                  height: 0.08*h,
                   color: isSelected ? Colors.white : kGreenSecondaryColor,
                 ),
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 1.h),
+            padding: EdgeInsets.only(top: 0.01*h),
             child: Container(
-              width: 20.w,
-              height: 4.h,
+              width: 0.20*w,
+              height: 0.04*h,
               decoration: BoxDecoration(
                 color: isSelected ? kGreenSecondaryColor : Colors.transparent,
                 borderRadius: BorderRadius.circular(20),
@@ -587,8 +593,10 @@ class PanelTitle extends StatelessWidget {
   final bool isRequired;
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.only(top: 2.h, bottom: 0.5.h),
+      padding: EdgeInsets.only(top: 0.02*h, bottom: 0.005*h),
       child: Text.rich(
         TextSpan(
           children: <TextSpan>[
@@ -621,9 +629,11 @@ class _IntervalSelectionState extends State<IntervalSelection> {
   var _selected = 0;
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     final AddReminderBloc newEntryBloc = Provider.of<AddReminderBloc>(context);
     return Padding(
-      padding: EdgeInsets.only(top: 1.5.h),
+      padding: EdgeInsets.only(top: 0.015*h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -636,7 +646,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
           DropdownButton(
             iconEnabledColor: kOtherColor,
             dropdownColor: kScaffoldColor,
-            itemHeight: 8.h,
+            itemHeight: 0.08*h,
             hint: _selected == 0
                 ? Text(
                     'Select an Interval',

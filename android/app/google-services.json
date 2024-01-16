@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "676764122238",
+    "project_id": "siya-1a39d",
+    "storage_bucket": "siya-1a39d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676764122238:android:564fbe6107dadd9f542c2f",
+        "android_client_info": {
+          "package_name": "com.example.siya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCogmtZENyaIKKeydEoZIfcX1ulyVRv-QE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

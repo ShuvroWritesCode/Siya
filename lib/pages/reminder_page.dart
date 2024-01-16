@@ -1,5 +1,7 @@
 
 import 'package:siya/constants.dart';
+import 'package:siya/constants/push_routes.dart';
+import 'package:siya/constants/routes.dart';
 import 'package:siya/global_bloc.dart';
 import 'package:siya/model/medicine.dart';
 import 'package:siya/pages/add_reminder_page.dart';
@@ -7,7 +9,7 @@ import 'package:siya/pages/medicine_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:sizer/sizer.dart';
+
 
 
 class ReminderPage extends StatelessWidget {
@@ -15,6 +17,8 @@ class ReminderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         // appBar: AppBar(),
@@ -23,7 +27,7 @@ class ReminderPage extends StatelessWidget {
           child: Column(
             children: [
               TopContainer(),
-              SizedBox(height: 2.h),
+              SizedBox(height: 0.02*h),
               Flexible(
                 child: BottomContainer(),
               ),
@@ -31,21 +35,16 @@ class ReminderPage extends StatelessWidget {
           ),
         ),
         floatingActionButton: Container(
-          height: 55.sp,
-          width: 55.sp,
+          height: 55* MediaQuery.textScaleFactorOf(context),
+          width: 55* MediaQuery.textScaleFactorOf(context),
           child: FittedBox(
             child: FloatingActionButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AddReminderPage(), // Replace LoginPage with your actual page name
-                  ),
-                );
+                pushReplacementRoute(context, addreminderRoute);
               },
               // foregroundColor: kPrimaryColor,
               backgroundColor: kGreenSecondaryColor,
-              child: Icon(Icons.add,color: kScaffoldColor,size: 30.sp,),
+              child: Icon(Icons.add,color: kScaffoldColor,size: 30* MediaQuery.textScaleFactorOf(context),),
 
             ),
           ),
@@ -60,12 +59,14 @@ class TopContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     final GlobalBloc globalBloc = Provider.of<GlobalBloc>(context);
     return Column(
       children: [
         Container(
           alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(bottom: 1.h),
+          padding: EdgeInsets.only(bottom: 0.01*h),
           child: Text(
             'Worry less \nLive Healthier',
             textAlign: TextAlign.start,
@@ -76,18 +77,18 @@ class TopContainer extends StatelessWidget {
         ),
         Container(
           alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(bottom: 1.h),
+          padding: EdgeInsets.only(bottom: 0.01*h),
           child: Text(
             'Welcome to Siya',
             style: Theme.of(context).textTheme.displayMedium,
           ),
         ),
         SizedBox(
-          height: 2.h,
+          height: 0.02*h,
         ),
         Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.only(bottom: 1.h),
+          padding: EdgeInsets.only(bottom: 0.01*h),
           child: Text(
             'Your current number of reminders:',
             style: Theme.of(context).textTheme.displayMedium,
@@ -98,7 +99,7 @@ class TopContainer extends StatelessWidget {
             builder: (context, snapshot) {
               return Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.only(bottom: 1.h),
+                padding: EdgeInsets.only(bottom: 0.01*h),
                 child: Text(
                   !snapshot.hasData ? '0' : snapshot.data!.length.toString(),
                   style: Theme.of(context).textTheme.headlineMedium,
@@ -122,7 +123,7 @@ class BottomContainer extends StatelessWidget {
     //     style: Theme.of(context).textTheme.headlineLarge,
     //   ),
     // );
-
+    double h =MediaQuery.of(context).size.height;
     final GlobalBloc globalBloc = Provider.of<GlobalBloc>(context);
 
     return StreamBuilder(
@@ -142,7 +143,7 @@ class BottomContainer extends StatelessWidget {
           );
         } else {
           return GridView.builder(
-            padding: EdgeInsets.only(top: 1.h),
+            padding: EdgeInsets.only(top: 0.01*h),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
             ),
@@ -169,13 +170,14 @@ class MedicineCard extends StatelessWidget {
   Hero makeIcon(double size) {
     //here is the bug, the capital word of the first letter
     //lets fix
+    const double iconSize = 28.0;
     if (medicine.medicineType == 'Bottle') {
       return Hero(
         tag: medicine.medicineName! + medicine.medicineType!,
         child: SvgPicture.asset(
           'assets/icons/bottle.svg',
           color: kGreenSecondaryColor,
-          height: 7.h,
+          height: iconSize,
         ),
       );
     } else if (medicine.medicineType == 'Pill') {
@@ -184,7 +186,7 @@ class MedicineCard extends StatelessWidget {
         child: SvgPicture.asset(
           'assets/icons/pill.svg',
           color: kGreenSecondaryColor,
-          height: 7.h,
+          height: iconSize,
         ),
       );
     } else if (medicine.medicineType == 'Syringe') {
@@ -193,7 +195,7 @@ class MedicineCard extends StatelessWidget {
         child: SvgPicture.asset(
           'assets/icons/syringe.svg',
           color: kGreenSecondaryColor,
-          height: 7.h,
+          height: iconSize,
         ),
       );
     } else if (medicine.medicineType == 'Tablet') {
@@ -202,7 +204,7 @@ class MedicineCard extends StatelessWidget {
         child: SvgPicture.asset(
           'assets/icons/tablet.svg',
           color: kGreenSecondaryColor,
-          height: 7.h,
+          height: iconSize,
         ),
       );
     }
@@ -219,6 +221,8 @@ class MedicineCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h =MediaQuery.of(context).size.height;
+    double w =MediaQuery.of(context).size.width;
     return InkWell(
       highlightColor: Colors.white,
       splashColor: Colors.grey,
@@ -244,11 +248,11 @@ class MedicineCard extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.only(left: 2.w, right: 2.w, top: 1.h, bottom: 1.h),
-        margin: EdgeInsets.all(1.h),
+        padding: EdgeInsets.only(left: 0.02*w, right: 0.02*w, top: 0.01*h, bottom: 0.01*h),
+        margin: EdgeInsets.all(0.01*h),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(2.h),
+          borderRadius: BorderRadius.circular(0.02*h),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -257,7 +261,7 @@ class MedicineCard extends StatelessWidget {
             const Spacer(),
             //call the function here icon type
             //later we will the icon issue
-            makeIcon(7.h),
+            makeIcon(0.07*h),
             const Spacer(),
             //hero tag animation, later
             Hero(
@@ -270,7 +274,7 @@ class MedicineCard extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 0.3.h,
+              height: 0.03*h,
             ),
             //time interval data with condition, later
             Text(
