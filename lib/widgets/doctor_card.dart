@@ -64,11 +64,11 @@ class DoctorCard extends StatelessWidget {
                           const SizedBox(
                             width: 10,
                           ),
-                          const Text('Reviews'),
+                          const Text(''),
                           const Spacer(
                             flex: 1,
                           ),
-                          const Text('(20)'),
+                          const Text(''),
                           const Spacer(
                             flex: 7,
                           ),

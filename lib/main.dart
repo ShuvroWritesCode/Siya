@@ -9,6 +9,7 @@ import 'package:siya/pages/add_reminder_bloc.dart';
 import 'package:siya/pages/add_reminder_page.dart';
 import 'package:siya/pages/booking_screen.dart';
 import 'package:siya/pages/calendar_screen.dart';
+import 'package:siya/pages/custom_marker_info_window.dart';
 import 'package:siya/pages/edit_profile_screen.dart';
 import 'package:siya/pages/home_page.dart';
 import 'package:siya/pages/home_screen.dart';
@@ -62,6 +63,9 @@ class MyApp extends StatelessWidget {
             : homescreenRoute,
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.green.shade50,
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.green.shade300, // Set your desired app bar color here
+          ),
         ),
         routes: {
           loginRoute: (context) => LoginPage(),
@@ -82,6 +86,7 @@ class MyApp extends StatelessWidget {
           calendarRoute: (context) => const CalendarScreen(),
           bookingRoute: (context) => const BookingScreen(),
           searchRoute: (context) => MainNavigationScreen(index: 1),
+          nearbypharmacyRoute: (context) => CustomMarketInfoWindow(),
         },
       ),
     );

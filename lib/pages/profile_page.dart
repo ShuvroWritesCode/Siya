@@ -70,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
               icon: const Icon(
                 Icons.edit_outlined,
-                color: Colors.lightBlueAccent,
+                color: Colors.green,
                 size: 30,
               ),
             ),
@@ -127,7 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       CupertinoIcons.calendar,
                       size: 30,
                     ),
-                    iconColor: Colors.lightBlueAccent,
+                    iconColor: Colors.green,
                     title: const Text(
                       'Date of Birth',
                       style: TextStyle(
@@ -143,7 +143,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       CupertinoIcons.person_2,
                       size: 30,
                     ),
-                    iconColor: Colors.lightBlueAccent,
+                    iconColor: Colors.green,
                     title: const Text(
                       'Gender',
                       style: TextStyle(
@@ -159,7 +159,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       CupertinoIcons.drop,
                       size: 30,
                     ),
-                    iconColor: Colors.lightBlueAccent,
+                    iconColor: Colors.green,
                     title: const Text(
                       'Blood Type',
                       style: TextStyle(
@@ -178,7 +178,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Icons.coronavirus_outlined,
                   size: 30,
                 ),
-                iconColor: Colors.lightBlueAccent,
+                iconColor: Colors.green,
                 title: const Text(
                   'Allergies',
                   style: TextStyle(
@@ -198,7 +198,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   CupertinoIcons.info,
                   size: 30,
                 ),
-                iconColor: Colors.lightBlueAccent,
+                iconColor: Colors.green,
                 title: const Text(
                   'Health Conditions',
                   style: TextStyle(
@@ -239,7 +239,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.lightBlue, Colors.white],
+                    colors: [Colors.greenAccent, Colors.white],
                   ),
                 ),
               ),
@@ -264,6 +264,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             onPressed: () {
               Navigator.pushNamed(context, logout);
             },
+            style: ElevatedButton.styleFrom(
+              primary: Colors.green, // Set the background color to green
+            ),
             child: Text('Logout'),
           ),
         ],
@@ -290,7 +293,7 @@ class ProfileCard extends StatelessWidget {
             Text(
               label,
               style: const TextStyle(
-                  color: Colors.lightBlue,
+                  color: Colors.green,
                   fontSize: 12,
                   fontWeight: FontWeight.bold),
             ),

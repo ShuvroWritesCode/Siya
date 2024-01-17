@@ -60,7 +60,7 @@ Widget drawerWidget(BuildContext context) {
                       'Hello, $name',
                       style: const TextStyle(
                         fontSize: 25,
-                        color: Colors.lightBlue,
+                        color: Colors.green,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -72,6 +72,7 @@ Widget drawerWidget(BuildContext context) {
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
+                        color: Colors.greenAccent,
                       ),
                     ),
                   )
@@ -87,7 +88,7 @@ Widget drawerWidget(BuildContext context) {
               ListTile(
                 leading: const Icon(CupertinoIcons.home),
                 title: const Text("Home"),
-                iconColor: Colors.lightBlue,
+                iconColor: Colors.green,
                 onTap: () {
                   pushRoute(context, homescreenRoute);
                 },
@@ -95,7 +96,7 @@ Widget drawerWidget(BuildContext context) {
               ListTile(
                 leading: const Icon(Icons.calendar_month_outlined),
                 title: const Text("Calendar"),
-                iconColor: Colors.lightBlue,
+                iconColor: Colors.green,
                 onTap: () {
                   pushRoute(context, calendarRoute);
                 },
@@ -107,7 +108,7 @@ Widget drawerWidget(BuildContext context) {
               ListTile(
                 leading: const Icon(Icons.settings_outlined),
                 title: const Text("Settings"),
-                iconColor: Colors.lightBlue,
+                iconColor: Colors.green,
                 onTap: (){
                   pushRoute(context, settingsRoute);
                 },
@@ -115,7 +116,7 @@ Widget drawerWidget(BuildContext context) {
               ListTile(
                 leading: const Icon(Icons.logout),
                 title: const Text("Sign Out"),
-                iconColor: Colors.lightBlue,
+                iconColor: Colors.green,
                 onTap: () async {
                   await FirebaseAuth.instance.signOut();
                   pushReplacementNamedRoute(loginRoute);

@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'Click here to find pharmacies near you',
               ),
               onTap: () {
-                pushRoute(context, searchRoute);
+                pushRoute(context, nearbypharmacyRoute);
               },
             ),
             const SizedBox(

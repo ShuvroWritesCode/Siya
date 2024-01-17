@@ -84,14 +84,14 @@ class TopContainer extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 0.02*h,
+          height: 0.01*h,
         ),
         Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.only(bottom: 0.01*h),
+          padding: EdgeInsets.only(bottom: 0.005*h),
           child: Text(
             'Your current number of reminders:',
-            style: Theme.of(context).textTheme.displayMedium,
+            style: Theme.of(context).textTheme.displaySmall,
           ),
         ),
         StreamBuilder<List<Medicine>>(
@@ -99,7 +99,7 @@ class TopContainer extends StatelessWidget {
             builder: (context, snapshot) {
               return Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.only(bottom: 0.01*h),
+                padding: EdgeInsets.only(bottom: 0.005*h),
                 child: Text(
                   !snapshot.hasData ? '0' : snapshot.data!.length.toString(),
                   style: Theme.of(context).textTheme.headlineMedium,

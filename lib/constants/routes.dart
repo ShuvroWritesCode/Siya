@@ -16,3 +16,4 @@ const bookingRoute = '/booking-screen/';
 const searchRoute = '/search-screen/';
 const logout = '/logout/';
 const addreminderRoute = '/add-reminder/';
+const nearbypharmacyRoute = 'nearby-pharmacy/';

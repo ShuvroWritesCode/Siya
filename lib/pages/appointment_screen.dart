@@ -96,6 +96,16 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                       height: 20,
                     ),
                     SegmentedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                              (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.selected)){
+                              return Colors.green;
+                            }
+                            return Colors.transparent;
+                          },
+                        ),
+                      ),
                       segments: const [
                         ButtonSegment(
                             value: FilterStatus.upcoming,

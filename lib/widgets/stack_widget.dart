@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 Widget stackWidget(String assetName, String text) {
   return Container(
-    height: 350,
+    height: 360,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
       gradient: const LinearGradient(
-          colors: [Colors.lightBlue, Colors.lightBlueAccent],
+          colors: [Colors.green, Colors.greenAccent],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight),
     ),
