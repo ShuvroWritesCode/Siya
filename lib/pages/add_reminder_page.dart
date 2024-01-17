@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:siya/constants.dart';
 import 'package:siya/global_bloc.dart';
+import 'package:siya/local_notifications.dart';
 import 'package:siya/model/errors.dart';
 import 'package:siya/model/medicine.dart';
 import 'package:siya/model/medicine_type.dart';
@@ -293,7 +294,9 @@ class _AddReminderPageState extends State<AddReminderPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SuccessScreen()));
+                                  builder: (context) => const SuccessScreen()));
+
+                          // LocalNotifications.showSimpleNotification(title: 'Try', body: 'test', payload: 'test data');
                         },
                         style: TextButton.styleFrom(
                           backgroundColor: kPrimaryColor,

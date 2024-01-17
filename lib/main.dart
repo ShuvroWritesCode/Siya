@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart'; // Import the Provider package
 import 'package:siya/constants/routes.dart';
+import 'package:siya/local_notifications.dart';
 import 'package:siya/pages/add_reminder_bloc.dart';
 import 'package:siya/pages/add_reminder_page.dart';
 import 'package:siya/pages/booking_screen.dart';
@@ -32,6 +33,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await LocalNotifications.init();
   runApp(MyApp());
 }
 
