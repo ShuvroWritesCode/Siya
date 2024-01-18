@@ -121,6 +121,18 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             GestureDetector(
               child: stackWidget(
+                "assets/chat.jpeg",
+                'Click here to check your prescriptions',
+              ),
+              onTap: () {
+                pushRoute(context, ocrRoute);
+              },
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            GestureDetector(
+              child: stackWidget(
                 'assets/chat.jpeg',
                 'Click here to check your reminders',
               ),

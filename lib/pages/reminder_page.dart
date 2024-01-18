@@ -4,26 +4,23 @@ import 'package:siya/constants/push_routes.dart';
 import 'package:siya/constants/routes.dart';
 import 'package:siya/global_bloc.dart';
 import 'package:siya/model/medicine.dart';
-import 'package:siya/pages/add_reminder_page.dart';
 import 'package:siya/pages/medicine_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-
-
 class ReminderPage extends StatelessWidget {
   const ReminderPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     double h =MediaQuery.of(context).size.height;
     double w =MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(),
-        body: Padding(
-          padding: EdgeInsets.all(5.0),
+        appBar: AppBar(
+        title: const Text('Reminder'),
+      ),
+        body: Center(
           child: Column(
             children: [
               TopContainer(),
@@ -44,8 +41,9 @@ class ReminderPage extends StatelessWidget {
               },
               // foregroundColor: kPrimaryColor,
               backgroundColor: kGreenSecondaryColor,
-              child: Icon(Icons.add,color: kScaffoldColor,size: 30* MediaQuery.textScaleFactorOf(context),),
-
+              child: Icon(Icons.add,color: kScaffoldColor,
+              size: 30* MediaQuery.textScaleFactorOf(context),
+              ),
             ),
           ),
         ),
@@ -64,33 +62,33 @@ class TopContainer extends StatelessWidget {
     final GlobalBloc globalBloc = Provider.of<GlobalBloc>(context);
     return Column(
       children: [
-        Container(
-          alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(bottom: 0.01*h),
-          child: Text(
-            'Worry less \nLive Healthier',
-            textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-              color: Colors.green[700]
-            ),
-          ),
-        ),
-        Container(
-          alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(bottom: 0.01*h),
-          child: Text(
-            'Welcome to Siya',
-            style: Theme.of(context).textTheme.displayMedium,
-          ),
-        ),
+        // Container(
+        //   alignment: Alignment.topLeft,
+        //   padding: EdgeInsets.only(bottom: 0.01*h),
+        //   child: Text(
+        //     'Worry less \nLive Healthier',
+        //     textAlign: TextAlign.start,
+        //     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+        //       color: Colors.green[700]
+        //     ),
+        //   ),
+        // ),
+        // Container(
+        //   alignment: Alignment.topLeft,
+        //   padding: EdgeInsets.only(bottom: 0.01*h),
+        //   child: Text(
+        //     'Welcome to Siya',
+        //     style: Theme.of(context).textTheme.displayMedium,
+        //   ),
+        // ),
         SizedBox(
-          height: 0.01*h,
+          height: 100,
         ),
         Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.only(bottom: 0.005*h),
+          padding: EdgeInsets.only(bottom: 60),
           child: Text(
-            'Your current number of reminders:',
+            'Current number of reminders:',
             style: Theme.of(context).textTheme.displaySmall,
           ),
         ),
@@ -99,7 +97,7 @@ class TopContainer extends StatelessWidget {
             builder: (context, snapshot) {
               return Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.only(bottom: 0.005*h),
+                padding: EdgeInsets.only(bottom: 0),
                 child: Text(
                   !snapshot.hasData ? '0' : snapshot.data!.length.toString(),
                   style: Theme.of(context).textTheme.headlineMedium,
@@ -137,13 +135,13 @@ class BottomContainer extends StatelessWidget {
             child: Text(
               'No Medicine',
               style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                color: Colors.red[300]
+                color: Colors.green.shade200,
               ),
             ),
           );
         } else {
           return GridView.builder(
-            padding: EdgeInsets.only(top: 0.01*h),
+            padding: EdgeInsets.only(top: 0),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
             ),

@@ -27,6 +27,7 @@ import 'firebase_options.dart';
 import 'global_bloc.dart';
 import 'pages/verify_email_screen.dart';
 import 'package:siya/pages/logout.dart';
+import 'package:siya/pages/ocr.dart';
 
 
 void main() async {
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
           bookingRoute: (context) => const BookingScreen(),
           searchRoute: (context) => MainNavigationScreen(index: 1),
           nearbypharmacyRoute: (context) => CustomMarketInfoWindow(),
+          ocrRoute: (context) => OCRPage(),
         },
       ),
     );
